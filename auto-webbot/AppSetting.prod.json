@@ -1,13 +1,4 @@
 {
-<<<<<<< HEAD
-  "Credential": {
-    "UserName": "nh4682822@gmail.com",
-    "Pass": "ObayaShi21301593!@",
-    "OutputFilePrefix": "auto-mail",
-    "RandomSleep": {
-      "From": 5,
-      "To": 10
-=======
   //User agent:
   //Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246
   //Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36
@@ -40,9 +31,8 @@
       "From": 1, // >= 1
       "To": 1 // <= 1
     },
-    "PauseDuringRun": false,
+    "PauseDuringRun": true,
     "Timeout": 10,
-    "LoginRetry": 10,
     "Sleep": {
       "ScanEvery": [
         {
@@ -91,8 +81,7 @@
         "To": 30
       },
       "DelayAfterAllPost": 10,
-      "SleepBetweenEachAction": 5000
->>>>>>> 6ba429a345a00d4dd73c72177e55ad715aacd0fd
+      "SleepBetweenEachAction": 2000
     }
   }
 }
