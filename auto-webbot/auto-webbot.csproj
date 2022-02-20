@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="adpics\**" />
+    <EmbeddedResource Remove="adpics\**" />
+    <None Remove="adpics\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="OpenQA.Selenium.Chrome.ChromeDriverExtensions" Version="1.2.0" />
     <PackageReference Include="Selenium.Support" Version="4.1.0" />
@@ -23,10 +29,6 @@
     <None Update="AppSetting.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="adpics\" />
   </ItemGroup>
 
 </Project>

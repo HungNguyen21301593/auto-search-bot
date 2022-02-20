@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using AngleSharp.Common;
 using auto_webbot.Model;
@@ -23,16 +22,36 @@ namespace auto_webbot
         private static AppSetting _globalSetting;
         private static WebDriverWait _globalDriverWait;
         private static readonly Random Random = new Random();
-        private static readonly TimeSpan waitTime = TimeSpan.FromMinutes(1);
-        
+        private static readonly TimeSpan waitTime = TimeSpan.FromSeconds(30);
+
 
         static async Task Main(string[] args)
         {
             Console.WriteLine("Starting...");
             var jsonText = await File.ReadAllTextAsync("AppSetting.json");
             var config = JsonConvert.DeserializeObject<AppSetting>(jsonText);
-            Console.WriteLine($"Config: {JsonConvert.SerializeObject(config)}");
             _globalSetting = config;
+            
+            //var userWantToEnterNewKeywords = true;
+            //while (userWantToEnterNewKeywords)
+            //{
+            //    Console.WriteLine($"Here is the current config: {JsonConvert.SerializeObject(_globalSetting)}");
+            //    Console.WriteLine("Do you want to input new keyword? y/n");
+            //    var yes = Console.ReadLine();
+            //    if (yes != null && yes.ToLower() == "y")
+            //    {
+            //        userWantToEnterNewKeywords = true;
+            //        Console.WriteLine("Please enter new keyword!");
+            //        var key = Console.ReadLine();
+            //        _globalSetting.Keywords.Add(key);
+            //    }
+            //    else
+            //    {
+            //        userWantToEnterNewKeywords = false;
+            //    }
+            //}
+
+            
             Console.CancelKeyPress += delegate
             {
                 if (_globalWebDriver == null) return;
@@ -45,11 +64,15 @@ namespace auto_webbot
             _globalWebDriver = SetupDriverInstance();
             _globalDriverWait = new WebDriverWait(_globalWebDriver, TimeSpan.FromMinutes(1));
 
+           
+
             while (true)
             {
                 for (var pageIndex = config.StartPage; pageIndex < config.EndPage; pageIndex++)
                 {
+                    Console.WriteLine($"********************* Start page {pageIndex} *********************");
                     await ScanPage(pageIndex);
+                    Console.WriteLine($"********************* End page {pageIndex} *********************");
                 }
             }
         }
@@ -62,11 +85,22 @@ namespace auto_webbot
             {
                 try
                 {
-                    urls.GetItemByIndex(urlIndex).FindElement(By.TagName("a")).Click();
+
+                    Console.WriteLine($"Page {pageIndex} - Ad {urlIndex + 1}");
+                    Console.WriteLine("--------------------------------------------------------------------");
+                    urls.GetItemByIndex(urlIndex).FindElement(By.ClassName("title")).Click();
                     var title = GetTitle().ToLower();
+                    Console.WriteLine($"Title: {title}");
+
                     var description = GetDescription().ToLower();
+                    Console.WriteLine($"Description: {description}");
+
                     foreach (var keyword in _globalSetting.Keywords.Select(k => k.ToLower()))
                     {
+                        if (!description.Contains(keyword) && title.Contains(keyword))
+                        {
+                            continue;
+                        }
                         if (title.Contains(keyword))
                         {
                             await SendMessage($"Found keyword {keyword} in title | url {_globalWebDriver.Url}");
@@ -80,37 +114,38 @@ namespace auto_webbot
                 }
                 catch (Exception e)
                 {
-                    continue;
+                    // ignored
                 }
                 finally
                 {
                     urls = GetAllUrlElements(pageIndex);
+                    Console.WriteLine("--------------------------------------------------------------------");
                 }
             }
         }
 
         private static string GetDescription()
         {
-            var element =  new WebDriverWait(_globalWebDriver, waitTime)
-                .Until(ExpectedConditions.ElementIsVisible((By.CssSelector("div[class*='descriptionContainer']"))));
+            var element = new WebDriverWait(_globalWebDriver, waitTime)
+                .Until(ExpectedConditions.ElementExists((By.CssSelector("div[class*='descriptionContainer']"))));
             return element.GetAttribute("innerText");
         }
 
         private static string GetTitle()
         {
             var element = new WebDriverWait(_globalWebDriver, waitTime)
-                .Until(ExpectedConditions.ElementIsVisible((By.CssSelector("div[class*='realEstateTitle']"))));
+                .Until(ExpectedConditions.ElementExists((By.CssSelector("div[class*='mainColumn']"))));
             return element.GetAttribute("innerText");
         }
 
         private static IReadOnlyCollection<IWebElement> GetAllUrlElements(int pageIndex)
         {
             var homeUrl =
-                $"https://www.kijiji.ca/b-immobilier/ville-de-montreal/page-{pageIndex}/c34l1700281?ad=offering";
+                $"https://www.kijiji.ca/b-for-sale/alberta/page-{pageIndex}/c30353001l9003";
             _globalWebDriver.Navigate().GoToUrl(homeUrl);
             return new WebDriverWait(_globalWebDriver, waitTime)
                 .Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy((By.ClassName("info-container"))));
-            
+
         }
 
         public static async Task SendMessage(string text)
@@ -121,6 +156,7 @@ namespace auto_webbot
                 foreach (var telegramId in _globalSetting.TelegramIds)
                 {
                     await bot.SendTextMessageAsync(telegramId, text);
+                    Console.WriteLine($"Sent: {text}");
                 }
             }
             catch (Exception e)
@@ -144,7 +180,7 @@ namespace auto_webbot
             options.AddExcludedArgument("enable-automation");
             options.AddAdditionalOption("useAutomationExtension", false);
             options.AddArguments(chromeArguments);
-            options.PageLoadStrategy = PageLoadStrategy.Eager;
+            options.PageLoadStrategy = PageLoadStrategy.Normal;
             return new ChromeDriver(service, options);
         }
 
@@ -161,11 +197,11 @@ namespace auto_webbot
                 //"--headless",
                 "no-sandbox",
                 "--disable-gpu",
-                //"--disable-logging",
+                "--disable-logging",
                 "--disable-popup-blocking",
                 "disable-blink-features=AutomationControlled",
                 "--disable-dev-shm-usage",
-                "--log-level=0",
+                "--log-level=3",
                 "--disable-application-cache",
                 "enable-features=NetworkServiceInProcess",
                 "--disable-features=NetworkService"
