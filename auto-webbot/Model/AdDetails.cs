@@ -13,7 +13,7 @@ namespace auto_webbot.Model
             Tags = new List<string>();
             Fulfillments = new List<string>();
             Payments = new List<string>();
-            DynamicTextOptions = new List<string>() { "No, I do not want a CARFAX Canada report" };
+            DynamicTextOptions = new List<string>() { "No, I do not want a CARFAX Canada report", "Please Contact" };
         }
 
         public List<string> Categories { get; set; }

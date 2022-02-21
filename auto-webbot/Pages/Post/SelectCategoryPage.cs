@@ -59,16 +59,21 @@ namespace auto_webbot.Pages.Post
                 {
                     throw new Exception("Could not find categoryButtons");
                 }
-                categoryButtons.Where(b => b.Text == category).FirstOrDefault().Click();
-            }
-            if (config.AdGlobalSetting.Locations != null)
-            {
-                foreach (var location in config.AdGlobalSetting.Locations)
+
+                var categoryText = category;
+                if (category.StartsWith("Houses for Sale"))
                 {
-                    ClickLocation(location);
+                    categoryText = "Houses for Sale";
                 }
-                ClickGo();
-            } 
+                categoryButtons.Where(b => b.Text == categoryText).FirstOrDefault().Click();
+            }
+
+            if (config.AdGlobalSetting.Locations == null) return;
+            foreach (var location in config.AdGlobalSetting.Locations)
+            {
+                ClickLocation(location);
+            }
+            ClickGo();
         }
 
         private void ClickLocation(string location)

@@ -8,8 +8,8 @@
   // Get more here: https://deviceatlas.com/blog/list-of-user-agent-strings
   "UserSettings": [
     {
-      "Email": "hungnguyen21301593@gmail.com",
-      "Pass": "ObayaShi21301593!@",
+      "Email": "****************",
+      "Pass": "*****************",
       "UserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246",
       "Proxy": {
         "Host": null,
@@ -28,7 +28,7 @@
   "Mode": 1, // test:0 (run but dont post, delete), run: 1 (real run)
   "AdGlobalSetting": {
     "Locations": [ "Ontario (M - Z)", "Toronto (GTA)" ],
-    "SpecicalAdtitleSetting": [ "Epoxy","Flat" ],
+    "SpecicalAdtitleSetting": [],
     "Position": {
       "From": 1, // >= 1
       "To": 1 // <= 1
