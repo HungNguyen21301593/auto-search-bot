@@ -30,9 +30,11 @@ namespace auto_webbot.Pages.Post
             private By ChangeLocationButtonLocator = By.XPath("//*[text()='Change']");
             private By LocationLocator = By.Id("location");
             private By LocationFirstLocator = By.Id("LocationSelector-item-0");
+            private By LocationTextLocator = By.CssSelector("div[class*='locationText']");
             private By addressLocator = By.Id("servicesLocationInput");
             private By addressLocatorFirst = By.Id("LocationSelector-item-0");
             private By PriceLocator = By.Id("PriceAmount");
+            private By PricePleaseContactLocator = By.XPath("//*[text()='Please Contact']");
             private By PostButtonLocator = By.CssSelector("button[type='submit']");
             private By companyLocator = By.Id("company_s");
             private By carYearLocator = By.Id("caryear_i");
@@ -114,6 +116,14 @@ namespace auto_webbot.Pages.Post
                     InputPrice(adDetails);
                     Console.WriteLine("InputPrice");
                 }
+
+                if (adDetails.Price == 0)
+                {
+                    Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
+                    InputPricePleaseContact();
+                    Console.WriteLine("InputPrice");
+                }
+
                 if (adDetails.Company != null)
                 {
                     Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
@@ -211,19 +221,15 @@ namespace auto_webbot.Pages.Post
                         try
                         {
                             var selectElement = new SelectElement(select);
-                            foreach (var dynamicText in adDetails.DynamicTextOptions)
+                            foreach (var element in selectElement.Options)
                             {
-                                Console.WriteLine($"Trying to input {select.GetAttribute("name")} - {dynamicText}");
-                                foreach (IWebElement element in selectElement.Options)
-                                {
-                                    if (element.Text.Equals(dynamicText))
-                                    {
-                                        Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
-                                        element.Click();
-                                        Console.WriteLine($"Selected |{dynamicText}| on {select.GetAttribute("name")}");
-                                        Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
-                                    }
-                                }
+                                if (!adDetails.DynamicTextOptions.Any(dynamicText => element.Text.Equals(dynamicText)))
+                                    continue;
+                                Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
+                                element.Click();
+                                //Console.WriteLine($"Selected |{dynamicText}| on {@select.GetAttribute("name")}");
+                                Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
+                                break;
                             }
                         }
                         catch (Exception e)
@@ -395,6 +401,17 @@ namespace auto_webbot.Pages.Post
                 price.SendKeys(adDetails.Price.ToString());
             }
 
+            private void InputPricePleaseContact()
+            {
+                Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
+                var pleaseContact = WebWaiter
+                    .Until(SeleniumExtras
+                        .WaitHelpers
+                        .ExpectedConditions
+                        .ElementIsVisible(PricePleaseContactLocator));
+                pleaseContact.Click();
+            }
+
             private void InputPicture(AdDetails adDetails)
             {
                 var fileInputWrapper = webDriver.FindElement(FileInputWrapper);
@@ -420,7 +437,15 @@ namespace auto_webbot.Pages.Post
 
             private void InputLocation(string locationPrefix)
             {
-                InputLocatonOnce(locationPrefix);
+                try
+                {
+                    InputLocatonOnce(locationPrefix);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Failed input location:{e.Message}, retry one more time");
+                    InputLocatonOnce(locationPrefix);
+                }
             }
 
             private void InputLocatonOnce(string locationText)
@@ -436,12 +461,23 @@ namespace auto_webbot.Pages.Post
                     .WaitHelpers
                     .ExpectedConditions
                     .ElementIsVisible(LocationLocator));
+                location.Clear();
+                Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
                 location.SendKeys(locationText);
                 Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
                 var locationFirst = webDriver.FindElements(LocationFirstLocator);
                 if (locationFirst.Any())
                 {
                     locationFirst.First().Click();
+                }
+
+                Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
+                var locationTextElement = webDriver.FindElements(LocationTextLocator);
+                if (!locationTextElement.Any()) return;
+                var currentLocationText = locationTextElement.First().GetAttribute("innerText");
+                if (!currentLocationText.StartsWith(locationText))
+                {
+                    throw new Exception("Input location failed");
                 }
             }
 
