@@ -16,12 +16,11 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace auto_webbot
 {
-    class Program
+    internal class Program
     {
         private static IWebDriver _globalWebDriver;
         private static AppSetting _globalSetting;
         private static WebDriverWait _globalDriverWait;
-        private static readonly Random Random = new Random();
         private static readonly TimeSpan waitTime = TimeSpan.FromSeconds(30);
 
 
@@ -31,7 +30,7 @@ namespace auto_webbot
             var jsonText = await File.ReadAllTextAsync("AppSetting.json");
             var config = JsonConvert.DeserializeObject<AppSetting>(jsonText);
             _globalSetting = config;
-            
+
             //var userWantToEnterNewKeywords = true;
             //while (userWantToEnterNewKeywords)
             //{
@@ -51,7 +50,7 @@ namespace auto_webbot
             //    }
             //}
 
-            
+
             Console.CancelKeyPress += delegate
             {
                 if (_globalWebDriver == null) return;
@@ -64,15 +63,23 @@ namespace auto_webbot
             _globalWebDriver = SetupDriverInstance();
             _globalDriverWait = new WebDriverWait(_globalWebDriver, TimeSpan.FromMinutes(1));
 
-           
-
             while (true)
             {
                 for (var pageIndex = config.StartPage; pageIndex < config.EndPage; pageIndex++)
                 {
-                    Console.WriteLine($"********************* Start page {pageIndex} *********************");
-                    await ScanPage(pageIndex);
-                    Console.WriteLine($"********************* End page {pageIndex} *********************");
+                    try
+                    {
+                        Console.WriteLine($"********************* Start page {pageIndex} *********************");
+                        await ScanPage(pageIndex);
+                        Console.WriteLine($"********************* End page {pageIndex} *********************");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(
+                            $"Warning, there was an error {e.Message}, proceed to close current driver and reconnect");
+                        _globalWebDriver.Quit();
+                        _globalWebDriver = SetupDriverInstance();
+                    }
                 }
             }
         }
@@ -85,7 +92,6 @@ namespace auto_webbot
             {
                 try
                 {
-
                     Console.WriteLine($"Page {pageIndex} - Ad {urlIndex + 1}");
                     Console.WriteLine("--------------------------------------------------------------------");
                     urls.GetItemByIndex(urlIndex).FindElement(By.ClassName("title")).Click();
@@ -216,32 +222,7 @@ namespace auto_webbot
             Console.WriteLine($"Setup OutputPath: {path}");
             Directory.CreateDirectory("output");
             Directory.CreateDirectory("AdPics");
-            FileStream outfilestream = new FileStream(path, FileMode.CreateNew);
-
             Console.OutputEncoding = System.Text.Encoding.Unicode;
-            var outstreamwriter = new StreamWriter(outfilestream)
-            {
-                AutoFlush = true
-            };
-        }
-
-        private static void NonBlockedSleepInMinutes(int sleep)
-        {
-            //var minutesToSleep = _globalSetting.AdGlobalSetting.Sleep.SleepInterval;
-            //var numberOfSleeps = sleep / minutesToSleep;
-            //for (var i = 0; i < numberOfSleeps; i++)
-            //{
-            //    Console.WriteLine($"Wait {minutesToSleep} minutes then reload the page to stay signed in | {i + 1}/{numberOfSleeps}");
-            //    Thread.Sleep(TimeSpan.FromMinutes(minutesToSleep));
-            //    //try
-            //    //{
-            //    //    GlobalWebDriver.Navigate().GoToUrl("https://www.kijiji.ca/?siteLocale=en_CA");
-            //    //}
-            //    //catch (Exception e)
-            //    //{
-            //    //    Console.WriteLine($"Warning, webdriver has been disconnected...|{e.Message}");
-            //    //}
-            //}
         }
     }
 }
