@@ -25,7 +25,7 @@
     "Receivers": [ "hungnguyen21301593@gmail.com" ] // add emails of recervers here "blessme@protonmail.com"
   },
   "OutputFilePrefix": "output-",
-  "Mode": 0, // test:0 (run but dont post, delete), run: 1 (real run)
+  "Mode": 1, // test:0 (run but dont post, delete), run: 1 (real run)
   "AdGlobalSetting": {
     "Locations": [ "Ontario (M - Z)", "Toronto (GTA)" ],
     "SpecicalAdtitleSetting": [],
@@ -81,9 +81,9 @@
       ],
       "ScanWhenFoundNothing": 5,
       "DelayBetweenEachRead": 1,
-      "DelayAfterAllRead": 1, //10
+      "DelayAfterAllRead": 10, //10
       "DelayBetweenEachDelete": 1,
-      "DelayAfterAllDeleted": 1, //10
+      "DelayAfterAllDeleted": 10, //10
       "DelayAfterEachPost": {
         "From": 10,
         "To": 30
