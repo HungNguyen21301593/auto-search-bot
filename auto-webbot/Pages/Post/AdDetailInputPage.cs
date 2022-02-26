@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace auto_webbot.Pages.Post
+﻿namespace auto_webbot.Pages.Post
 {
     using System;
-    using System.Collections.ObjectModel;
     using System.Linq;
     using System.Threading;
     using global::auto_webbot.Model;
@@ -40,7 +35,7 @@ namespace auto_webbot.Pages.Post
             private By carYearLocator = By.Id("caryear_i");
             private By carKmLocator = By.Id("carmileageinkms_i");
             private By selectBasicPackage = By.CssSelector("button[data-qa-id='package-0-bottom-select']");
-            
+
 
             public bool InputAdDetails(AdDetails adDetails)
             {
@@ -454,26 +449,14 @@ namespace auto_webbot.Pages.Post
                 if (changeButton.Any())
                 {
                     changeButton.First().Click();
-                    CleanLocaltion();
+                    CleanLocation();
                 }
-                var location = WebWaiter
-                .Until(SeleniumExtras
-                    .WaitHelpers
-                    .ExpectedConditions
-                    .ElementIsVisible(LocationLocator));
-                location.Clear();
-                Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
-                location.SendKeys(locationText);
-                Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
-                var locationFirst = webDriver.FindElements(LocationFirstLocator);
-                if (locationFirst.Any())
-                {
-                    locationFirst.First().Click();
-                }
+
+                RetryInputLocationMultipleTimes(locationText);
 
                 Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
                 var locationTextElement = webDriver.FindElements(LocationTextLocator);
-                if (!locationTextElement.Any()) return;
+                if (!locationTextElement.Any()) throw new Exception("There was error input Location");
                 var currentLocationText = locationTextElement.First().GetAttribute("innerText");
                 if (!currentLocationText.StartsWith(locationText))
                 {
@@ -481,7 +464,33 @@ namespace auto_webbot.Pages.Post
                 }
             }
 
-            private void CleanLocaltion()
+            private void RetryInputLocationMultipleTimes(string locationText)
+            {
+                var location = WebWaiter
+                    .Until(SeleniumExtras
+                        .WaitHelpers
+                        .ExpectedConditions
+                        .ElementIsVisible(LocationLocator));
+
+                for (var i = 0; i < 20; i++)
+                {
+                    location.Clear();
+                    Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
+                    location.SendKeys(locationText);
+                    Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
+                    var locationFirst = webDriver.FindElements(LocationFirstLocator);
+                    if (!locationFirst.Any())
+                    {
+                        Console.WriteLine("Input location failed, proceed retry");
+                        continue;
+                    }
+                    locationFirst.First().Click();
+                    Console.WriteLine("Input location success");
+                    break;
+                }
+            }
+
+            private void CleanLocation()
             {
                 var location = WebWaiter
                     .Until(SeleniumExtras

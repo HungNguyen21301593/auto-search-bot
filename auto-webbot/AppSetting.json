@@ -8,8 +8,8 @@
   // Get more here: https://deviceatlas.com/blog/list-of-user-agent-strings
   "UserSettings": [
     {
-      "Email": "hungnguyen21301593@gmail.com",
-      "Pass": "ObayaShi21301593!@",
+      "Email": "contact@EZinvestments.info",
+      "Pass": "Testtest123!",
       "UserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246",
       "Proxy": {
         "Host": null,
@@ -25,7 +25,7 @@
     "Receivers": [ "hungnguyen21301593@gmail.com" ] // add emails of recervers here "blessme@protonmail.com"
   },
   "OutputFilePrefix": "output-",
-  "Mode": 1, // test:0 (run but dont post, delete), run: 1 (real run)
+  "Mode": 0, // test:0 (run but dont post, delete), run: 1 (real run)
   "AdGlobalSetting": {
     "Locations": [ "Ontario (M - Z)", "Toronto (GTA)" ],
     "SpecicalAdtitleSetting": [],
@@ -81,9 +81,9 @@
       ],
       "ScanWhenFoundNothing": 5,
       "DelayBetweenEachRead": 1,
-      "DelayAfterAllRead": 10, //10
+      "DelayAfterAllRead": 1, //10
       "DelayBetweenEachDelete": 1,
-      "DelayAfterAllDeleted": 10, //10
+      "DelayAfterAllDeleted": 1, //10
       "DelayAfterEachPost": {
         "From": 10,
         "To": 30

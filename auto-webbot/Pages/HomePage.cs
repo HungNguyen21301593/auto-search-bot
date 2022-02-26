@@ -4,11 +4,9 @@ using auto_webbot.Pages.Post;
 using auto_webbot.Pages.Post.auto_webbot.Pages.Post;
 using Newtonsoft.Json;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 
 namespace auto_webbot.Pages

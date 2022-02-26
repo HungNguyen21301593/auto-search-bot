@@ -25,7 +25,7 @@ namespace auto_webbot.Pages.Delete
         private By ImageTitleLocator = By.CssSelector("div[class*='imageTitleContainer']");
         private By EditAdLocator = By.PartialLinkText("Edit Ad");
         private By categoriesLocators1 = By.CssSelector("span[class*='breadcrumb-']");
-        private By adtitleLocator = By.CssSelector("h1[class*='title']");
+        private By adtitleLocator = By.Id("postad-title");
         private By desLocator = By.Id("pstad-descrptn");
         private By tagsLocators = By.CssSelector("li[class*='tagItem']");
         private By addressLocator = By.Id("servicesLocationInput");
@@ -91,10 +91,6 @@ namespace auto_webbot.Pages.Delete
             Console.WriteLine($"ReadDynamicsTexts {JsonConvert.SerializeObject(adDetails)}");
 
             Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
-            ReadAdTitle(adDetails);
-            Console.WriteLine($"ReadAdTitle {JsonConvert.SerializeObject(adDetails)}");
-
-            Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
             DownloadPics(adDetails);
             Console.WriteLine($"DownloadPics {JsonConvert.SerializeObject(adDetails)}");
 
@@ -108,7 +104,11 @@ namespace auto_webbot.Pages.Delete
             Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
             ReadCategories(adDetails);
             Console.WriteLine($"ReadCategories {JsonConvert.SerializeObject(adDetails)}");
-            
+
+            Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
+            ReadAdTitle(adDetails);
+            Console.WriteLine($"ReadAdTitle {JsonConvert.SerializeObject(adDetails)}");
+
             Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
             ReadAdDescription(adDetails);
             Console.WriteLine($"ReadAdDescription {JsonConvert.SerializeObject(adDetails)}");
@@ -325,9 +325,16 @@ namespace auto_webbot.Pages.Delete
             var items = webDriver.FindElements(adtitleLocator);
             if (items.Any())
             {
-                adDetails.AdTitle = items.First().Text;
+                adDetails.AdTitle = items.First().GetAttribute("value");
             }
         }
+
+        private string ProceedAdTitle(string adTitle)
+        {
+            var output = adTitle.Split(':')[1].Trim();
+            return output;
+        }
+
         private void ReadCategories(AdDetails adDetails)
         {
             Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);

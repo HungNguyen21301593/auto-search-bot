@@ -285,7 +285,7 @@ namespace AutoBot
             options.AddAdditionalOption("useAutomationExtension", false);
             options.AddArguments(chromeArguments);
             AddProxySeting(userSetting, options);
-            options.PageLoadStrategy = PageLoadStrategy.Eager;
+            options.PageLoadStrategy = PageLoadStrategy.Default;
             return new ChromeDriver(service, options);
         }
 
