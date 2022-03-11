@@ -288,6 +288,32 @@
                 addressElementFirst.Click();
             }
 
+            //private void RetryInputAddressMultipleTimes(string locationText)
+            //{
+            //    var location = WebWaiter
+            //        .Until(SeleniumExtras
+            //            .WaitHelpers
+            //            .ExpectedConditions
+            //            .ElementIsVisible(LocationLocator));
+
+            //    for (var i = 0; i < 20; i++)
+            //    {
+            //        location.Clear();
+            //        Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
+            //        location.SendKeys(locationText);
+            //        Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
+            //        var locationFirst = webDriver.FindElements(LocationFirstLocator);
+            //        if (!locationFirst.Any())
+            //        {
+            //            Console.WriteLine("Input location failed, proceed retry");
+            //            continue;
+            //        }
+            //        locationFirst.First().Click();
+            //        Console.WriteLine("Input location success");
+            //        break;
+            //    }
+            //}
+
             private void SelectTags(AdDetails adDetails)
             {
                 Thread.Sleep(config.AdGlobalSetting.Sleep.SleepBetweenEachAction);
