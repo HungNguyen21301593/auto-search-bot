@@ -1,0 +1,1 @@
+docker-compose -f docker-compose.yml --env-file .\config\FaiqHassan\.env -p "faiqhassan" up -d --build

@@ -1,0 +1,278 @@
+[
+  {
+    "Type": "Chotot",
+    "User": null,
+    "Password": null,
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 5,
+    "MaximumAdsOnEachPage": 3,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.nhatot.com/mua-ban-bat-dong-san-tp-ho-chi-minh"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [ "6056072775", "-972131631"], //"-972131631"
+    "DumbTelegramIds": [],
+    "Keywords": [ "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Đồng Nai", "Khánh Hòa", "Bà Rịa - Vũng Tàu", "Bình Dương", "Tây Ninh", "Long An" ], // "Bedroom Apartment", "Downtown" ,
+    "ExcludeKeywords": []
+  },
+  {
+    "Type": "Chotot",
+    "User": null,
+    "Password": null,
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 5,
+    "MaximumAdsOnEachPage": 3,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.nhatot.com/mua-ban-bat-dong-san-ha-noi"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [ "6056072775", "-972131631" ], //"-972131631"
+    "DumbTelegramIds": [],
+    "Keywords": [ "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Đồng Nai", "Khánh Hòa", "Bà Rịa - Vũng Tàu", "Bình Dương", "Tây Ninh", "Long An" ], // "Bedroom Apartment", "Downtown" ,
+    "ExcludeKeywords": []
+  },
+  {
+    "Type": "Chotot",
+    "User": null,
+    "Password": null,
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 5,
+    "MaximumAdsOnEachPage": 3,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.nhatot.com/mua-ban-bat-dong-san-da-nang"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [ "6056072775", "-972131631" ], //"-972131631"
+    "DumbTelegramIds": [],
+    "Keywords": [ "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Đồng Nai", "Khánh Hòa", "Bà Rịa - Vũng Tàu", "Bình Dương", "Tây Ninh", "Long An" ], // "Bedroom Apartment", "Downtown" ,
+    "ExcludeKeywords": []
+  },
+  {
+    "Type": "Chotot",
+    "User": null,
+    "Password": null,
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 5,
+    "MaximumAdsOnEachPage": 3,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.nhatot.com/mua-ban-bat-dong-san-dong-nai"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [ "6056072775", "-972131631" ], //"-972131631"
+    "DumbTelegramIds": [],
+    "Keywords": [ "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Đồng Nai", "Khánh Hòa", "Bà Rịa - Vũng Tàu", "Bình Dương", "Tây Ninh", "Long An" ], // "Bedroom Apartment", "Downtown" ,
+    "ExcludeKeywords": []
+  },
+  {
+    "Type": "Chotot",
+    "User": null,
+    "Password": null,
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 5,
+    "MaximumAdsOnEachPage": 3,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.nhatot.com/mua-ban-bat-dong-san-dong-nai"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [ "6056072775", "-972131631" ], //"-972131631"
+    "DumbTelegramIds": [],
+    "Keywords": [ "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Đồng Nai", "Khánh Hòa", "Bà Rịa - Vũng Tàu", "Bình Dương", "Tây Ninh", "Long An" ], // "Bedroom Apartment", "Downtown" ,
+    "ExcludeKeywords": []
+  },
+  {
+    "Type": "Chotot",
+    "User": null,
+    "Password": null,
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 5,
+    "MaximumAdsOnEachPage": 3,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.nhatot.com/mua-ban-bat-dong-san-khanh-hoa"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [ "6056072775", "-972131631" ], //"-972131631"
+    "DumbTelegramIds": [],
+    "Keywords": [ "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Đồng Nai", "Khánh Hòa", "Bà Rịa - Vũng Tàu", "Bình Dương", "Tây Ninh", "Long An" ], // "Bedroom Apartment", "Downtown" ,
+    "ExcludeKeywords": []
+  },
+  {
+    "Type": "Chotot",
+    "User": null,
+    "Password": null,
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 5,
+    "MaximumAdsOnEachPage": 3,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.nhatot.com/mua-ban-bat-dong-san-ba-ria-vung-tau"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [ "6056072775", "-972131631" ], //"-972131631"
+    "DumbTelegramIds": [],
+    "Keywords": [ "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Đồng Nai", "Khánh Hòa", "Bà Rịa - Vũng Tàu", "Bình Dương", "Tây Ninh", "Long An" ], // "Bedroom Apartment", "Downtown" ,
+    "ExcludeKeywords": []
+  },
+  {
+    "Type": "Chotot",
+    "User": null,
+    "Password": null,
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 5,
+    "MaximumAdsOnEachPage": 3,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.nhatot.com/mua-ban-bat-dong-san-binh-duong"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [ "6056072775", "-972131631" ], //"-972131631"
+    "DumbTelegramIds": [],
+    "Keywords": [ "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Đồng Nai", "Khánh Hòa", "Bà Rịa - Vũng Tàu", "Bình Dương", "Tây Ninh", "Long An" ], // "Bedroom Apartment", "Downtown" ,
+    "ExcludeKeywords": []
+  },
+  {
+    "Type": "Chotot",
+    "User": null,
+    "Password": null,
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 5,
+    "MaximumAdsOnEachPage": 3,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.nhatot.com/mua-ban-bat-dong-san-tay-ninh"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [ "6056072775", "-972131631" ], //"-972131631"
+    "DumbTelegramIds": [],
+    "Keywords": [ "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Đồng Nai", "Khánh Hòa", "Bà Rịa - Vũng Tàu", "Bình Dương", "Tây Ninh", "Long An" ], // "Bedroom Apartment", "Downtown" ,
+    "ExcludeKeywords": []
+  },
+  {
+    "Type": "Chotot",
+    "User": null,
+    "Password": null,
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 5,
+    "MaximumAdsOnEachPage": 3,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.nhatot.com/mua-ban-bat-dong-san-long-an"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [ "6056072775", "-972131631" ], //"-972131631"
+    "DumbTelegramIds": [],
+    "Keywords": [ "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Đồng Nai", "Khánh Hòa", "Bà Rịa - Vũng Tàu", "Bình Dương", "Tây Ninh", "Long An" ], // "Bedroom Apartment", "Downtown" ,
+    "ExcludeKeywords": []
+  },
+  {
+    "Type": "Alonhadat",
+    "User": null,
+    "Password": null,
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 4,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://alonhadat.com.vn/nha-dat/can-ban.html"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [ "6056072775", "-972131631" ], //"-972131631"
+    "DumbTelegramIds": [],
+    "Keywords": [ "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Đồng Nai", "Khánh Hòa", "Bà Rịa - Vũng Tàu", "Bình Dương", "Tây Ninh", "Long An" ], // "Bedroom Apartment", "Downtown" ,
+    "ExcludeKeywords": []
+  },
+  {
+    "Type": "AlonhadatAgent",
+    "User": null,
+    "Password": null,
+    "StartPage": 822102,
+    "EndPage": 900000,
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 0,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://alonhadat.com.vn/nha-moi-gioi/ngo-[page].html"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [ "6056072775", "-972131631" ], //"-972131631"
+    "DumbTelegramIds": [],
+    "Keywords": [],
+    "ExcludeKeywords": []
+  }
+]

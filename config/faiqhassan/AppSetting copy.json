@@ -1,0 +1,314 @@
+[
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 2,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-phone-tablet/london/iphone-11/k0c132l1700214?ad=offering&price=100__325&for-sale-by=ownr"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-787400919"
+    ],
+    "DumbTelegramIds": [
+      "-809000676"
+    ],
+    "Keywords": ["iphone 11" ],
+    "ExcludeKeywords": ["buy", "pro", "max"]
+  },
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 2,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-phone-tablet/london/iphone-xr/k0c132l1700214?for-sale-by=ownr&ad=offering&price=40__200"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-787400919"
+    ],
+    "DumbTelegramIds": [
+      "-809000676"
+    ],
+    "Keywords": ["iphone xr" ],
+    "ExcludeKeywords": ["buy"]
+  },
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 2,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-phone-tablet/london/iphone-11-pro-max/k0c132l1700214?for-sale-by=ownr&ad=offering&price=100__450"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-787400919"
+    ],
+    "DumbTelegramIds": [
+      "-809000676"
+    ],
+    "Keywords": ["iphone 11 pro max" ],
+    "ExcludeKeywords": ["buy"]
+  },
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 2,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-phone-tablet/london/iphone-13/k0c132l1700214?for-sale-by=ownr&price=110__650"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-787400919"
+    ],
+    "DumbTelegramIds": [
+      "-809000676"
+    ],
+    "Keywords": ["iphone 13"],
+    "ExcludeKeywords": ["pro", "max", "buy"]
+  },
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 2,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-phone-tablet/london/iphone-13-pro/k0c132l1700214?for-sale-by=ownr&ad=offering&price=100__825"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-787400919"
+    ],
+    "DumbTelegramIds": [
+      "-809000676"
+    ],
+    "Keywords": ["iphone 13 pro"],
+    "ExcludeKeywords": ["buy", "max"]
+  },
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 2,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-phone-tablet/london/iphone-13-pro-max/k0c132l1700214?for-sale-by=ownr&price=200__950"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-787400919"
+    ],
+    "DumbTelegramIds": [
+      "-809000676"
+    ],
+    "Keywords": ["iphone 13 pro max"],
+    "ExcludeKeywords": ["buy"]
+  },
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 2,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-phone-tablet/london/iphone-xs-max/k0c132l1700214?for-sale-by=ownr&ad=offering&price=100__300"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-787400919"
+    ],
+    "DumbTelegramIds": [
+      "-809000676"
+    ],
+    "Keywords": ["iphone xs max" ],
+    "ExcludeKeywords": ["buy"]
+  },
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 2,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-phone-tablet/london/iphone-12-pro/k0c132l1700214?for-sale-by=ownr&ad=offering&price=100__625"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-787400919"
+    ],
+    "DumbTelegramIds": [
+      "-809000676"
+    ],
+    "Keywords": ["iphone 12 pro" ],
+    "ExcludeKeywords": ["buy", "max"]
+  },
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 2,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-phone-tablet/london/iphone-12/k0c132l1700214?for-sale-by=ownr&ad=offering&price=150__450"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-787400919"
+    ],
+    "DumbTelegramIds": [
+      "-809000676"
+    ],
+    "Keywords": ["iphone 12" ],
+    "ExcludeKeywords": ["buy", "pro", "max"]
+  },
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 2,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-laptops/london/macbook/apple/k0c773l1700214a269?ad=offering"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-787400919"
+    ],
+    "DumbTelegramIds": [
+      "-809000676"
+    ],
+    "Keywords": ["macbook" ],
+    "ExcludeKeywords": ["Buy", "2013", "2014"]
+  },
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 2,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-phone-tablet/london/iphones/k0c132l1700214?price=50__&ad=offering"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-787400919"
+    ],
+    "DumbTelegramIds": [
+      "-809000676"
+    ],
+    "Keywords": [],
+    "ExcludeKeywords": ["Buy"]
+  },
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 2,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-buy-sell/london/ipad-pro-12-9/k0c10l1700214?price=150__&ad=offering"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-787400919"
+    ],
+    "DumbTelegramIds": [
+      "-809000676"
+    ],
+    "Keywords": [],
+    "ExcludeKeywords": ["Buy"]
+  }
+]

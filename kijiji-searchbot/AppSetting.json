@@ -1,0 +1,21 @@
+{
+  "StartPage": 1, //>=1
+  "EndPage": 2, //<2
+  "BaseUrlSetting": {
+    "CriteriaUrls": [
+      "https://www.kijiji.ca/b-cars-trucks/[location]/used/page-[page]/c174l9004a49?price=[fromPrice]__[toPrice]&kilometers=[fromKm]__[toKm]"
+    ],
+    "DynamicParams": {
+      "Page": "[page]"
+    },
+    "StaticParams": {
+      "[location]": "ontario",
+      "[fromPrice]": "0",
+      "[toPrice]": "100",
+      "[fromKm]": "0",
+      "[toKm]": "1000"
+    }
+  },
+  "TelegramIds": [ "6056072775" ],
+  "Keywords": [] // "Bedroom Apartment", "Downtown" 
+}
