@@ -1,0 +1,109 @@
+[
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 5,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-phone-tablet/london/iphones/k0c132l1700214?price=50__&ad=offering"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-787400919"
+    ],
+    "DumbTelegramIds": [],
+    "Keywords": [],
+    "ExcludeKeywords": ["Buy"]
+  },
+  {
+    "Type": "MarketPlace",
+    "User": "nth.khang0505@gmail.com",
+    "Password": "Khang0505",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 3,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.facebook.com/marketplace/london_ontario/search/?minPrice=100&maxPrice=450&daysSinceListed=1&sortBy=distance_ascend&query=iphone%2012&exact=true"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+        "[location]": "calgary",
+        "[fromPrice]": "0",
+        "[toPrice]": "4000",
+        "[toYear]": "2015"
+      }
+    },
+    "TelegramIds": [ "6056072775", "-993759165"],
+    "DumbTelegramIds": ["-809000676"],
+    "Keywords": ["iphone 12", "i phone 12", "IPHONE 12"],
+    "ExcludeKeywords": ["case", "cases"]
+   },
+   {
+    "Type": "MarketPlace",
+    "User": "bachduongtl0304@gmail.com",
+    "Password": "03032003",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 3,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.facebook.com/marketplace/london_ontario/search?minPrice=80&maxPrice=330&daysSinceListed=1&sortBy=distance_ascend&query=iphone%2011&exact=true"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+        "[location]": "calgary",
+        "[fromPrice]": "0",
+        "[toPrice]": "4000",
+        "[toYear]": "2015"
+      }
+    },
+    "TelegramIds": [ "6056072775", "-993759165"],
+    "DumbTelegramIds": ["-809000676"],
+    "Keywords": ["iPhone 11", "i phone 11", "IPHONE 11"],
+    "ExcludeKeywords": ["pro", "max","case", "cases"]
+   },
+   {
+    "Type": "MarketPlace",
+    "User": "0858008266",
+    "Password": "09091991",
+    "StartPage": 0, //>=1
+    "EndPage": 1, //<2
+    "MinAdsPositionOnEachPage": 0,
+    "MaximumAdsOnEachPage": 3,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.facebook.com/marketplace/london_ontario/search?minPrice=50&maxPrice=700&daysSinceListed=1&sortBy=distance_ascend&query=iphone%2013&exact=true"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+        "[location]": "calgary",
+        "[fromPrice]": "0",
+        "[toPrice]": "4000",
+        "[toYear]": "2015"
+      }
+    },
+    "TelegramIds": [ "6056072775", "-993759165"],
+    "DumbTelegramIds": ["-809000676"],
+    "Keywords": ["iPhone 13", "i phone 13", "IPHONE 13"],
+    "ExcludeKeywords": ["pro", "max","case", "cases"]
+   }
+]
+//0818436343
+//09091991

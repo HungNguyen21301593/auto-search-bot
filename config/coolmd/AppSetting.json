@@ -1,0 +1,27 @@
+[
+  {
+   "Type": "Kijiji",
+   "StartPage": 0, //>=1
+   "EndPage": 1, //<2
+   "MinAdsPositionOnEachPage": 0,
+   "MaximumAdsOnEachPage": 15,
+   "BaseUrlSetting": {
+     "CriteriaUrls": [
+       "https://www.kijiji.ca/b-cars-trucks/ontario/2013__2019-used/c174l9004a68a49?for-sale-by=ownr&price=4000__25000&kilometers=500__160000"
+     ],
+     "DynamicParams": {
+       "Page": "[page]"
+     },
+     "StaticParams": {
+       "[location]": "calgary",
+       "[fromPrice]": "0",
+       "[toPrice]": "4000",
+       "[toYear]": "2015"
+     }
+   },
+   "TelegramIds": [ "6056072775", "-877365085" ],
+   "DumbTelegramIds": ["-962199081"],
+   "Keywords": ["No accident"],
+   "ExcludeKeywords": []
+  }
+]

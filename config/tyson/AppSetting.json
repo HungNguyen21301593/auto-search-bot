@@ -1,0 +1,71 @@
+[
+  {
+    "Type": "Kijiji",
+    "StartPage": 0, //>=0
+    "EndPage": 1, //<=1
+    "MinAdsPositionOnEachPage": 10,
+    "MaximumAdsOnEachPage": 15,
+    "BaseUrlSetting": {
+      "CriteriaUrls": [
+        "https://www.kijiji.ca/b-for-sale/alberta/c30353001l9003"
+      ],
+      "DynamicParams": {
+        "Page": "[page]"
+      },
+      "StaticParams": {
+      }
+    },
+    "TelegramIds": [
+      "6056072775",
+      "-694629324"
+    ],
+    "DumbTelegramIds": ["-946448291"],
+    "Keywords": [
+      "must sell",
+      "seller financing",
+      "AFS",
+      "Agreement for Sale",
+      "urgent sale",
+      "distressed",
+      "quick sale",
+      "divorce",
+      "moving sale",
+      "vendor take back",
+      "VTB",
+      "creative",
+      "moving sale",
+      "need to sell",
+      "foreclosure",
+      "creative financing",
+      "assumable",
+      "assumable mortgage",
+      "owner financing"
+    ],
+    "ExcludeKeywords": []
+  }
+  // {
+  //  "Type": "MarketPlace",
+  //  "User": "0858008266",
+  //  "Password": "Hung9995",
+  //  "StartPage": 0, //>=1
+  //  "EndPage": 1, //<2
+  //  "MinAdsPositionOnEachPage": 0,
+  //  "MaximumAdsOnEachPage": 1,
+  //  "BaseUrlSetting": {
+  //    "CriteriaUrls": [
+  //      "https://www.facebook.com/marketplace/[location]/vehicles?minPrice=[fromPrice]&maxPrice=[toPrice]&maxYear=[toYear]&minYear=0&sortBy=creation_time_descend&topLevelVehicleType=car_truck&exact=false"
+  //    ],
+  //    "DynamicParams": {
+  //      "Page": "[page]"
+  //    },
+  //    "StaticParams": {
+  //      "[location]": "calgary",
+  //      "[fromPrice]": "0",
+  //      "[toPrice]": "4000",
+  //      "[toYear]": "2015"
+  //    }
+  //  },
+  //  "TelegramIds": [ "6056072775", "-979655968"],
+  //  "Keywords": []
+  // }
+]

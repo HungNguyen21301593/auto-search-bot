@@ -1,0 +1,1 @@
+docker-compose -f docker-compose.yml --env-file .\config\tyson\.env -p "tyson" up -d --build
