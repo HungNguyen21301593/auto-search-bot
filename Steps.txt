@@ -8,3 +8,8 @@ cd /root/kijiji/KijijiHelper
 docker-compose down -v
 docker system prune -a
 docker-compose up -d --renew-anon-volumes --build --force-recreate
+
+
+// publish
+docker image tag faiqhassan-autosearch hungnguyen991995/autosearch
+docker image push hungnguyen991995/autosearch
