@@ -234,7 +234,7 @@ namespace auto_webbot
             options.AddExcludedArgument("enable-automation");
             options.AddArguments(chromeArguments);
             options.AddUserProfilePreference("profile.managed_default_content_settings.images", 2);
-            options.PageLoadStrategy = PageLoadStrategy.Normal;
+            options.PageLoadStrategy = PageLoadStrategy.Eager;
             var settings = new RemoteSessionSettings(options);
             var remoteDriverUrl = Environment.GetEnvironmentVariable("REMOTE_DRIVER_URL") ?? "http://localhost:4447/wd/hub";
             Console.WriteLine($"Connecting to webdriver server {remoteDriverUrl}");

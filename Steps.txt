@@ -22,4 +22,4 @@ docker image push hungnguyen991995/autosearch
 
 // Start
 docker-compose -f docker-compose-local.yml --env-file .\config\FaiqHassan\.env -p "faiqhassan" up -d --build
-docker-compose -f docker-compose.yml --env-file /root/auto-search-bot/config/faiqhassan/env -p "faiqhassan" up -d --build
+docker-compose -f docker-compose-prod.yml --env-file /root/auto-search-bot/config/faiqhassan/env -p "faiqhassan" up -d --build
