@@ -20,7 +20,7 @@ services:
       # - C:\Personal\Projects\auto-search-bot\config\${USER_NAME}\AppSetting.json:/app/AppSetting.json:rw
       # - C:\Personal\Projects\auto-search-bot\config\${USER_NAME}\SavedTitles.txt:/app/SavedTitles.txt:rw
        - /config/${USER_NAME}/AppSetting.json:/app/AppSetting.json:rw
-      - /config/${USER_NAME}/SavedTitles.txt:/app/SavedTitles.txt:rw
+       - /config/${USER_NAME}/SavedTitles.txt:/app/SavedTitles.txt:rw
 
   browser:
     container_name: ${USER_NAME}-browser
