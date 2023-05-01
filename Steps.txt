@@ -13,3 +13,7 @@ docker-compose up -d --renew-anon-volumes --build --force-recreate
 // publish
 docker image tag faiqhassan-autosearch hungnguyen991995/autosearch
 docker image push hungnguyen991995/autosearch
+
+
+// Start
+docker-compose -f docker-compose.yml --env-file /root/auto-search-bot/config/faiqhassan/env -p "faiqhassan" up -d --build
