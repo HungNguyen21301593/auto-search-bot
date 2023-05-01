@@ -4,7 +4,7 @@ services:
   autosearch:
     container_name: ${USER_NAME}-autosearch
     hostname: autosearch
-    build: "./search-bot"
+    image: hungnguyen991995/autosearch:latest
     privileged: true
     restart: always
     networks:
@@ -19,8 +19,8 @@ services:
     volumes:
       # - C:\Personal\Projects\auto-search-bot\config\${USER_NAME}\AppSetting.json:/app/AppSetting.json:rw
       # - C:\Personal\Projects\auto-search-bot\config\${USER_NAME}\SavedTitles.txt:/app/SavedTitles.txt:rw
-       - /config/${USER_NAME}/AppSetting.json:/app/AppSetting.json:rw
-       - /config/${USER_NAME}/SavedTitles.txt:/app/SavedTitles.txt:rw
+       - ./config/${USER_NAME}/AppSetting.json:/app/AppSetting.json:rw
+       - ./config/${USER_NAME}/SavedTitles.txt:/app/SavedTitles.txt:rw
 
   browser:
     container_name: ${USER_NAME}-browser
@@ -45,10 +45,10 @@ services:
         resources:
             limits:
               cpus: "1"
-              memory: 500M
+              memory: 800M
             reservations:
               cpus: "1"
-              memory: 400M
+              memory: 700M
 
 networks:
     web_net:

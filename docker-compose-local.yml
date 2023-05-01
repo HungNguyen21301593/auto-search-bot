@@ -4,7 +4,7 @@ services:
   autosearch:
     container_name: ${USER_NAME}-autosearch
     hostname: autosearch
-    image: hungnguyen991995/autosearch:latest
+    build: "./search-bot"
     privileged: true
     restart: always
     networks:
@@ -17,10 +17,8 @@ services:
     depends_on:
       - browser
     volumes:
-      # - C:\Personal\Projects\auto-search-bot\config\${USER_NAME}\AppSetting.json:/app/AppSetting.json:rw
-      # - C:\Personal\Projects\auto-search-bot\config\${USER_NAME}\SavedTitles.txt:/app/SavedTitles.txt:rw
-       - ./config/${USER_NAME}/AppSetting.json:/app/AppSetting.json:rw
-       - ./config/${USER_NAME}/SavedTitles.txt:/app/SavedTitles.txt:rw
+      - C:\Personal\Projects\auto-search-bot\config\${USER_NAME}\AppSetting.json:/app/AppSetting.json:rw
+      - C:\Personal\Projects\auto-search-bot\config\${USER_NAME}\SavedTitles.txt:/app/SavedTitles.txt:rw
 
   browser:
     container_name: ${USER_NAME}-browser

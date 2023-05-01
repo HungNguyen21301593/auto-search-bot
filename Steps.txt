@@ -9,6 +9,11 @@ docker-compose down -v
 docker system prune -a
 docker-compose up -d --renew-anon-volumes --build --force-recreate
 
+// Stop all containers
+ docker stop $(docker ps -a -q)
+
+ // Clean 
+ docker system prune -a
 
 // publish
 docker image tag faiqhassan-autosearch hungnguyen991995/autosearch
@@ -16,4 +21,5 @@ docker image push hungnguyen991995/autosearch
 
 
 // Start
+docker-compose -f docker-compose-local.yml --env-file .\config\FaiqHassan\.env -p "faiqhassan" up -d --build
 docker-compose -f docker-compose.yml --env-file /root/auto-search-bot/config/faiqhassan/env -p "faiqhassan" up -d --build
