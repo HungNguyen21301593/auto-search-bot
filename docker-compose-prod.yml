@@ -1,26 +1,26 @@
 version: "3.9"
 services:
 
-  autosearch:
-    container_name: ${USER_NAME}-autosearch
-    hostname: autosearch
-    image: hungnguyen991995/autosearch:latest
-    privileged: true
-    restart: always
-    networks:
-          - web_net
-    environment:
-      - REMOTE_DRIVER_URL=http://browser:4444/wd/hub
-      - SEARCH_INTERVAL=${SEARCH_INTERVAL} 
-      - SLEEP_INTERVAL_FROM=${SLEEP_INTERVAL_FROM} 
-      - SLEEP_INTERVAL_TO=${SLEEP_INTERVAL_TO}   
-    depends_on:
-      - browser
-    volumes:
-      # - C:\Personal\Projects\auto-search-bot\config\${USER_NAME}\AppSetting.json:/app/AppSetting.json:rw
-      # - C:\Personal\Projects\auto-search-bot\config\${USER_NAME}\SavedTitles.txt:/app/SavedTitles.txt:rw
-       - ./config/${USER_NAME}/AppSetting.json:/app/AppSetting.json:rw
-       - ./config/${USER_NAME}/SavedTitles.txt:/app/SavedTitles.txt:rw
+  # autosearch:
+  #   container_name: ${USER_NAME}-autosearch
+  #   hostname: autosearch
+  #   image: hungnguyen991995/autosearch:latest
+  #   privileged: true
+  #   restart: always
+  #   networks:
+  #         - web_net
+  #   environment:
+  #     - REMOTE_DRIVER_URL=http://browser:4444/wd/hub
+  #     - SEARCH_INTERVAL=${SEARCH_INTERVAL} 
+  #     - SLEEP_INTERVAL_FROM=${SLEEP_INTERVAL_FROM} 
+  #     - SLEEP_INTERVAL_TO=${SLEEP_INTERVAL_TO}   
+  #   depends_on:
+  #     - browser
+  #   volumes:
+  #     # - C:\Personal\Projects\auto-search-bot\config\${USER_NAME}\AppSetting.json:/app/AppSetting.json:rw
+  #     # - C:\Personal\Projects\auto-search-bot\config\${USER_NAME}\SavedTitles.txt:/app/SavedTitles.txt:rw
+  #      - ./config/${USER_NAME}/AppSetting.json:/app/AppSetting.json:rw
+  #      - ./config/${USER_NAME}/SavedTitles.txt:/app/SavedTitles.txt:rw
 
   browser:
     container_name: ${USER_NAME}-browser
@@ -29,8 +29,8 @@ services:
     shm_size: 2gb
     privileged: true
     restart: always
-    networks:
-          - web_net
+    # networks:
+    #       - web_net
     environment:
       - SE_SCREEN_WIDTH=1920
       - SE_SCREEN_HEIGHT=1080
@@ -41,16 +41,16 @@ services:
     ports:
       - "${BROWSER_PORT}:4444"
       - "${BROWSER_VIEW_PORT}:7900"
-    deploy:
-        resources:
-            limits:
-              cpus: "1"
-              memory: 900M
-            reservations:
-              cpus: "1"
-              memory: 800M
+    # deploy:
+    #     resources:
+    #         limits:
+    #           cpus: "1"
+    #           memory: 900M
+    #         reservations:
+    #           cpus: "1"
+    #           memory: 800M
 
-networks:
-    web_net:
-      external: false
-      driver:  bridge
+# networks:
+#     web_net:
+#       external: false
+#       driver:  bridge
