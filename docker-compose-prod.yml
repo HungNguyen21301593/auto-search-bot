@@ -28,8 +28,8 @@ services:
     shm_size: 2gb
     privileged: true
     restart: always
-    # networks:
-    #       - web_net
+    networks:
+          - web_net
     environment:
       - SE_SCREEN_WIDTH=1920
       - SE_SCREEN_HEIGHT=1080
