@@ -14,6 +14,7 @@ services:
       - SEARCH_INTERVAL=${SEARCH_INTERVAL} 
       - SLEEP_INTERVAL_FROM=${SLEEP_INTERVAL_FROM} 
       - SLEEP_INTERVAL_TO=${SLEEP_INTERVAL_TO}   
+      - WARM_UP_SLEEP=${WARM_UP_SLEEP}   
     depends_on:
       - browser
     volumes:

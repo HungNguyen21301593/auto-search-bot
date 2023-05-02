@@ -26,7 +26,9 @@ namespace auto_webbot
         static async Task Main(string[] args)
         {
             Console.WriteLine("Starting...");
-            Thread.Sleep(30000);
+            int.TryParse(Environment.GetEnvironmentVariable("WARM_UP_SLEEP"), out var warmupSleep);
+            Console.WriteLine($"Wait {warmupSleep} seconds");
+            Thread.Sleep(TimeSpan.FromSeconds(warmupSleep));
             Console.WriteLine("Do you like to clean up saved ads? y/n");
             var result = Console.ReadLine();
             var jsonText = await File.ReadAllTextAsync("AppSetting.json");
