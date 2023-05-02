@@ -21,9 +21,10 @@ docker image push hungnguyen991995/autosearch
 
 
 // Start
-docker-compose -f docker-compose-local.yml --env-file .\config\FaiqHassan\.env -p "faiqhassan" up -d --build
-docker-compose -f docker-compose-prod.yml --env-file /root/auto-search-bot/config/faiqhassan/env --compatibility -p "faiqhassan"  up -d --build
+docker-compose -f docker-compose-local.yml --env-file .\config\FaiqHassan\env -p "faiqhassan" up -d --build
 
+docker-compose -f docker-compose-prod.yml --env-file /root/auto-search-bot/config/faiqhassan/env --compatibility -p "faiqhassan"  up -d --build
+docker-compose -f docker-compose-prod.yml --env-file /root/auto-search-bot/config/tyson/env --compatibility -p "tyson"  up -d --build
 
 // Add 2G swap
 // https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04
