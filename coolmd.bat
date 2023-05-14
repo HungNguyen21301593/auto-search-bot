@@ -1,1 +1,0 @@
-docker-compose -f docker-compose.yml --env-file .\config\coolmd\.env -p "coolmd" up -d --build

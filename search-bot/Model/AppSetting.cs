@@ -11,6 +11,7 @@ namespace auto_webbot.Model
         public int EndPage { get; set; }
         public int MinAdsPositionOnEachPage { get; set; }
         public int MaximumAdsOnEachPage { get; set; }
+        public List<string> MustHaveKeywords { get; set; }
         public List<string> Keywords { get; set; }
         public List<string> ExcludeKeywords { get; set; }
         public List<string> TelegramIds { get; set; }

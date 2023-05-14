@@ -50,7 +50,19 @@ namespace kijiji_searchbot.Executor
             var message = GenerateMessage(description, title, phone, name, webUrl);
             var lowerDescription = description.ToLower().Trim();
             var lowerTitle = title.ToLower().Trim();
-            var shouldIgnored = AppSetting.ExcludeKeywords.Select(k => k.ToLower()).Any(lowkey => lowerDescription.Contains(lowkey) || lowerTitle.Contains(lowkey));
+
+            var containAllMustHaveKeywords = AppSetting.MustHaveKeywords
+                .Select(k => k.ToLower())
+                .All(musthaveKeyword => lowerDescription.Contains(musthaveKeyword) || lowerTitle.Contains(musthaveKeyword));
+            if (!containAllMustHaveKeywords)
+            {
+                WriteAdToFile(title);
+                LogsMessageBuilder.AppendLine($"Does not contain all must have keywords: {string.Join(",", AppSetting.MustHaveKeywords)}, skip");
+                return;
+            }
+            var shouldIgnored = AppSetting.ExcludeKeywords
+                .Select(k => k.ToLower())
+                .Any(lowkey => lowerDescription.Contains(lowkey) || lowerTitle.Contains(lowkey));
             if (shouldIgnored)
             {
                 WriteAdToFile(title);
