@@ -90,7 +90,7 @@ namespace auto_webbot
         private static async Task ScanPage(string homeUrl)
         {
             var urls = GetAllUrlElements(homeUrl);
-            var count = urls.Count;
+            var count = Math.Min(urls.Count, 15);
             for (var urlIndex = 0; urlIndex < count; urlIndex++)
             {
                 try
@@ -179,7 +179,7 @@ namespace auto_webbot
         {
             try
             {
-                var bot = new TelegramBotClient("5150406902:AAF73-gIDknNLkrYqpfTlODO-Wz9oh8mxG8");
+                var bot = new TelegramBotClient("6152200916:AAGfCn5mBnDhQ6qDEy-X8sKZF6rbnGjDPwk");
                 foreach (var telegramId in _globalSetting.TelegramIds)
                 {
                     await bot.SendTextMessageAsync(telegramId, text);

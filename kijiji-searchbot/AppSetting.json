@@ -3,7 +3,7 @@
   "EndPage": 2, //<2
   "BaseUrlSetting": {
     "CriteriaUrls": [
-      "https://www.kijiji.ca/b-cars-trucks/[location]/used/page-[page]/c174l9004a49?price=[fromPrice]__[toPrice]&kilometers=[fromKm]__[toKm]"
+      "https://www.kijiji.ca/b-video-games-consoles/winnipeg/video-game-console/k0c141l1700192?sort=dateDesc"
     ],
     "DynamicParams": {
       "Page": "[page]"
@@ -16,6 +16,6 @@
       "[toKm]": "1000"
     }
   },
-  "TelegramIds": [ "6056072775" ],
+  "TelegramIds": [ "-993611578" ],
   "Keywords": [] // "Bedroom Apartment", "Downtown" 
 }
