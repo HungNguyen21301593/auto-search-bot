@@ -1,13 +1,9 @@
-﻿using AngleSharp.Common;
-using AngleSharp.Dom;
-using auto_webbot.Model;
+﻿using auto_webbot.Model;
 using CaptchaSharp.Models;
 using CaptchaSharp.Services;
 using Newtonsoft.Json;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,12 +16,12 @@ namespace kijiji_searchbot.Executor
     public abstract class ExecutorBase
     {
         public IWebDriver WebDriver { get; }
-        public ExecutorSetting AppSetting { get; }
+        public ExecutorSettingBase AppSetting { get; }
         public string SavedTitlesFilePath { get; }
         public StringBuilder LogsMessageBuilder { get; set; }
         public Random RandomSleepEngine { get; set; }
 
-        public ExecutorBase(IWebDriver WebDriver, ExecutorSetting AppSetting, string SavedTitlesFilePath)
+        public ExecutorBase(IWebDriver WebDriver, ExecutorSettingBase AppSetting, string SavedTitlesFilePath)
         {
             this.WebDriver = WebDriver ?? throw new ArgumentNullException(nameof(WebDriver));
             this.AppSetting = AppSetting ?? throw new ArgumentNullException(nameof(AppSetting));
@@ -43,76 +39,14 @@ namespace kijiji_searchbot.Executor
             Thread.Sleep(TimeSpan.FromSeconds(sleep));
         }
 
-
-        public async Task ProceedSendMessageAsync(string description, string title, string phone = "", string name = "", string urlToscan = "")
-        {
-            var webUrl = WebDriver.Url;
-            var message = GenerateMessage(description, title, phone, name, webUrl);
-            var lowerDescription = description.ToLower().Trim();
-            var lowerTitle = title.ToLower().Trim();
-
-            var containAllMustHaveKeywords = AppSetting.MustHaveKeywords
-                .Select(k => k.ToLower())
-                .All(musthaveKeyword => lowerDescription.Contains(musthaveKeyword) || lowerTitle.Contains(musthaveKeyword));
-            if (!containAllMustHaveKeywords)
-            {
-                WriteAdToFile(title);
-                LogsMessageBuilder.AppendLine($"Does not contain all must have keywords: {string.Join(",", AppSetting.MustHaveKeywords)}, skip");
-                return;
-            }
-            var shouldIgnored = AppSetting.ExcludeKeywords
-                .Select(k => k.ToLower())
-                .Any(lowkey => lowerDescription.Contains(lowkey) || lowerTitle.Contains(lowkey));
-            if (shouldIgnored)
-            {
-                WriteAdToFile(title);
-                LogsMessageBuilder.AppendLine("Found an exculude keywords in title or description, skip");
-                return;
-            }
-            if (!AppSetting.Keywords.Any())
-            {
-                WriteAdToFile(title);
-                var phoneText = string.IsNullOrWhiteSpace(phone) ? $" phone:{phone}":"";
-                await SendMessage(message);
-                LogsMessageBuilder.AppendLine("There is no keyword define, proceed send notification");
-            }
-            
-            var listMatcheKeywords = new List<string>();
-            foreach (var lowkeyword in AppSetting.Keywords.Select(k => k.ToLower()))
-            {
-                if (!lowerDescription.Contains(lowkeyword) && !lowerTitle.Contains(lowkeyword))
-                {
-                    Console.WriteLine($"There is no keyword \"{lowkeyword}\" on title or description");
-                    LogsMessageBuilder.AppendLine($"There is no keyword \"{lowkeyword}\" on title or description");
-                    continue;
-                }
-
-                if (lowerTitle.Contains(lowkeyword) || lowerDescription.Contains(lowkeyword))
-                {
-                    WriteAdToFile(title);
-                   
-                    
-                    LogsMessageBuilder.AppendLine("Found ad matched, add to send list");
-                    listMatcheKeywords.Add(lowkeyword);
-                    continue;
-                }
-            }
-
-            if (listMatcheKeywords.Any())
-            {
-                var foundMessage = $"{string.Join(", ", listMatcheKeywords.Select(s=>s.ToUpper()))} in:" +
-                       $"{Environment.NewLine}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" +
-                       $"{Environment.NewLine}{message}";
-                await SendMessage(foundMessage);
-            }
-            WriteAdToFile(title);
-        }
-
-        public async Task SendMessage(string text)
+        public async Task SendMessage(string text, TelegramBotClient bot = null)
         {
             try
             {
-                var bot = new TelegramBotClient("5150406902:AAF73-gIDknNLkrYqpfTlODO-Wz9oh8mxG8");
+                if (bot == null)
+                {
+                    bot = new TelegramBotClient("5150406902:AAF73-gIDknNLkrYqpfTlODO-Wz9oh8mxG8");
+                }
                 foreach (var telegramId in AppSetting.TelegramIds)
                 {
                     await bot.SendTextMessageAsync(telegramId, text);
@@ -125,13 +59,16 @@ namespace kijiji_searchbot.Executor
             }
         }
 
-        public async Task SendLogMessage(StringBuilder logsMessageBuilder)
+        public async Task SendLogMessage(StringBuilder logsMessageBuilder, TelegramBotClient bot = null)
         {
             try
             {
                 var text = logsMessageBuilder.ToString();
                 var truncateText = text.Substring(0, Math.Min(4000, text.Length - 1));
-                var bot = new TelegramBotClient("5150406902:AAF73-gIDknNLkrYqpfTlODO-Wz9oh8mxG8");
+                if (bot == null)
+                {
+                    bot = new TelegramBotClient("5150406902:AAF73-gIDknNLkrYqpfTlODO-Wz9oh8mxG8");
+                }
                 foreach (var telegramId in AppSetting.DumbTelegramIds)
                 {
                     await bot.SendTextMessageAsync(telegramId, truncateText);
@@ -172,45 +109,7 @@ namespace kijiji_searchbot.Executor
             WebDriver.Navigate().GoToUrl(url);
         }
 
-        private string GenerateMessage(string description = "", string title ="", string phone = "", string name = "", string webUrl = "")
-        {
-            var stringBuilder = new StringBuilder();
-            if (!string.IsNullOrWhiteSpace(name))
-            {
-                stringBuilder.AppendLine($"Name: {name}");
-                stringBuilder.AppendLine("------------------------------------------------------------------------");
-            }
-            if (!string.IsNullOrWhiteSpace(phone))
-            {
-                stringBuilder.AppendLine($"Phone: {phone}");
-                stringBuilder.AppendLine("------------------------------------------------------------------------");
-            }
-            if (!string.IsNullOrWhiteSpace(title))
-            {
-                stringBuilder.AppendLine($"Title: {title}");
-                stringBuilder.AppendLine("------------------------------------------------------------------------");
-            }
-            if (!string.IsNullOrWhiteSpace(description))
-            {
-                stringBuilder.AppendLine($"Description: {description}");
-                stringBuilder.AppendLine("------------------------------------------------------------------------");
-            }
-
-            stringBuilder.AppendLine($"URL: {webUrl} ");
-            return stringBuilder.ToString();
-        }
-
-        public int GetStartPosition()
-        {
-            return AppSetting.MinAdsPositionOnEachPage;
-        }
-
-        public int GetStopPosition(int urlsCount)
-        {
-            return Math.Min(urlsCount, AppSetting.MinAdsPositionOnEachPage + AppSetting.MaximumAdsOnEachPage);
-        }
-
-        public async Task TrySolveCaptchaAsync()
+                public async Task TrySolveCaptchaAsync()
         {
             try
             {
@@ -242,7 +141,7 @@ namespace kijiji_searchbot.Executor
         {
             try
             {
-                Console.WriteLine($"Try to handle error unreachable Exception, {inputException}");
+                Console.WriteLine($"Try to handle error unreachable Exception");
                 WebDriver.Navigate().GoToUrl("chrome://net-internals/#dns");
                 WebDriver.FindElements(By.CssSelector("button[value='Clear host cache']"))
                     .FirstOrDefault()?.Click();

@@ -33,6 +33,9 @@
     <None Update="SavedTitles.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="windowsdesktop-runtime-6.0.2-win-x64.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

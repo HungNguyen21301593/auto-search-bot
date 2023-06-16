@@ -14,22 +14,22 @@ using Telegram.Bot;
 
 namespace kijiji_searchbot.Executor
 {
-    public class ChototExecutor : ExecutorBase, IExecutor
+    public class ChototExecutor : ListingPageSearchExecutorBase, IExecutor
     {
 
-        public ChototExecutor(IWebDriver WebDriver, ExecutorSetting AppSetting, string SavedTitlesFilePath) :
+        public ChototExecutor(IWebDriver WebDriver, ListingPageSearchExecutorSetting AppSetting, string SavedTitlesFilePath) :
             base(WebDriver, AppSetting, SavedTitlesFilePath)
         {
         }
 
         public async Task Run()
         {
-            foreach (var criteriaUrl in AppSetting.BaseUrlSetting.CriteriaUrls)
+            foreach (var criteriaUrl in ListingPageSearchExecutorSetting.BaseUrlSetting.CriteriaUrls)
             {
-                for (var pageIndex = AppSetting.StartPage; pageIndex < AppSetting.EndPage; pageIndex++)
+                for (var pageIndex = ListingPageSearchExecutorSetting.StartPage; pageIndex < ListingPageSearchExecutorSetting.EndPage; pageIndex++)
                 {
-                    var allParams = AppSetting.BaseUrlSetting.StaticParams;
-                    allParams.TryAdd(AppSetting.BaseUrlSetting.DynamicParams.Page, pageIndex.ToString());
+                    var allParams = ListingPageSearchExecutorSetting.BaseUrlSetting.StaticParams;
+                    allParams.TryAdd(ListingPageSearchExecutorSetting.BaseUrlSetting.DynamicParams.Page, pageIndex.ToString());
                     var homeUrl = allParams.Apply(criteriaUrl);
                     try
                     {

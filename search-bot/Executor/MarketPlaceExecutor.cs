@@ -11,30 +11,30 @@ using System.Threading.Tasks;
 
 namespace kijiji_searchbot.Executor
 {
-    public class MarketPlaceExecutor : ExecutorBase, IExecutor
+    public class MarketPlaceExecutor : ListingPageSearchExecutorBase, IExecutor
     {
 
-        public MarketPlaceExecutor(IWebDriver WebDriver, ExecutorSetting AppSetting, string SavedTitlesFilePath) :
+        public MarketPlaceExecutor(IWebDriver WebDriver, ListingPageSearchExecutorSetting AppSetting, string SavedTitlesFilePath) :
             base(WebDriver, AppSetting, SavedTitlesFilePath)
         {
         }
 
         public async Task Run()
         {
-            TryLogin(AppSetting.User, AppSetting.Password);
-            foreach (var criteriaUrl in AppSetting.BaseUrlSetting.CriteriaUrls)
+            TryLogin(ListingPageSearchExecutorSetting.User, ListingPageSearchExecutorSetting.Password);
+            foreach (var criteriaUrl in ListingPageSearchExecutorSetting.BaseUrlSetting.CriteriaUrls)
             {
-                for (var pageIndex = AppSetting.StartPage; pageIndex < AppSetting.EndPage; pageIndex++)
+                for (var pageIndex = ListingPageSearchExecutorSetting.StartPage; pageIndex < ListingPageSearchExecutorSetting.EndPage; pageIndex++)
                 {
-                    var allParams = AppSetting.BaseUrlSetting.StaticParams;
-                    allParams.TryAdd(AppSetting.BaseUrlSetting.DynamicParams.Page, pageIndex.ToString());
+                    var allParams = ListingPageSearchExecutorSetting.BaseUrlSetting.StaticParams;
+                    allParams.TryAdd(ListingPageSearchExecutorSetting.BaseUrlSetting.DynamicParams.Page, pageIndex.ToString());
                     var homeUrl = allParams.Apply(criteriaUrl);
                     try
                     {
                         Console.WriteLine($"********************* Start page {pageIndex} *********************");
                         LogsMessageBuilder.Clear();
                         LogsMessageBuilder.AppendLine($"------------------------------------------------------------------");
-                        LogsMessageBuilder.AppendLine($"{AppSetting.Type}: Proceed scan page {homeUrl} with keywords: {string.Join(", ", AppSetting.Keywords)}");
+                        LogsMessageBuilder.AppendLine($"{ListingPageSearchExecutorSetting.Type}: Proceed scan page {homeUrl} with keywords: {string.Join(", ", ListingPageSearchExecutorSetting.Keywords)}");
                         await SendLogMessage(LogsMessageBuilder);
                         await ScanPage(homeUrl);
                         Console.WriteLine($"********************* End page {pageIndex} *********************");
@@ -47,7 +47,7 @@ namespace kijiji_searchbot.Executor
                     finally
                     {
                         LogsMessageBuilder.Clear();
-                        LogsMessageBuilder.AppendLine($"{AppSetting.Type}: Done scan page {homeUrl}");
+                        LogsMessageBuilder.AppendLine($"{ListingPageSearchExecutorSetting.Type}: Done scan page {homeUrl}");
                         LogsMessageBuilder.AppendLine($"------------------------------------------------------------------");
                         await SendLogMessage(LogsMessageBuilder);
                     }

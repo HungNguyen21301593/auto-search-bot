@@ -7,13 +7,16 @@ using kijiji_searchbot.Exceptions;
 
 namespace kijiji_searchbot.Executor
 {
-    public class AlonhadatAgentExecutor : ExecutorBase, ISimpleExecutor
+    public class AlonhadatAgentExecutor : ListingPageSearchExecutorBase, ISimpleExecutor
     {
 
-        public AlonhadatAgentExecutor(IWebDriver WebDriver, ExecutorSetting AppSetting, string SavedTitlesFilePath) :
+        public AlonhadatAgentExecutor(IWebDriver WebDriver, ListingPageSearchExecutorSetting AppSetting, string SavedTitlesFilePath) :
             base(WebDriver, AppSetting, SavedTitlesFilePath)
         {
+            this.AppSetting = AppSetting;
         }
+
+        public ListingPageSearchExecutorSetting AppSetting { get; }
 
         public async Task Run()
         {

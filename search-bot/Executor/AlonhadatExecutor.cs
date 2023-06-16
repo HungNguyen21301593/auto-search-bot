@@ -13,23 +13,23 @@ using Newtonsoft.Json;
 
 namespace kijiji_searchbot.Executor
 {
-    public class AlonhadatExecutor : ExecutorBase, IExecutor
+    public class AlonhadatExecutor : ListingPageSearchExecutorBase, IExecutor
     {
 
-        public AlonhadatExecutor(IWebDriver WebDriver, ExecutorSetting AppSetting, string SavedTitlesFilePath) :
+        public AlonhadatExecutor(IWebDriver WebDriver, ListingPageSearchExecutorSetting AppSetting, string SavedTitlesFilePath) :
             base(WebDriver, AppSetting, SavedTitlesFilePath)
         {
         }
 
         public async Task Run()
         {
-            foreach (var criteriaUrl in AppSetting.BaseUrlSetting.CriteriaUrls)
+            foreach (var criteriaUrl in ListingPageSearchExecutorSetting.BaseUrlSetting.CriteriaUrls)
             {
-                for (var pageIndex = AppSetting.StartPage; pageIndex < AppSetting.EndPage; pageIndex++)
+                for (var pageIndex = ListingPageSearchExecutorSetting.StartPage; pageIndex < ListingPageSearchExecutorSetting.EndPage; pageIndex++)
                 {
-                    var allParams = AppSetting.BaseUrlSetting.StaticParams;
-                    allParams.Remove(AppSetting.BaseUrlSetting.DynamicParams.Page);
-                    allParams.TryAdd(AppSetting.BaseUrlSetting.DynamicParams.Page, pageIndex.ToString());
+                    var allParams = ListingPageSearchExecutorSetting.BaseUrlSetting.StaticParams;
+                    allParams.Remove(ListingPageSearchExecutorSetting.BaseUrlSetting.DynamicParams.Page);
+                    allParams.TryAdd(ListingPageSearchExecutorSetting.BaseUrlSetting.DynamicParams.Page, pageIndex.ToString());
                     var homeUrl = allParams.Apply(criteriaUrl);
                     try
                     {
